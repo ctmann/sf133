@@ -1,7 +1,7 @@
 # sf133
 
 ### Data Definitions
-(OMB circular A-11, Appendix F)[https://obamawhitehouse.archives.gov/sites/default/files/omb/assets/a11_current_year/app_f.pdf] contains data definitions for SF133.
+[OMB circular A-11, Appendix F](https://obamawhitehouse.archives.gov/sites/default/files/omb/assets/a11_current_year/app_f.pdf) contains data definitions for SF133.
 
 ### Formats
 In FY2018, OMB began providing a quarterly report, along with separate monthly (.xlsx)
@@ -29,5 +29,10 @@ TRAG (treasury agency code) wrongly identifies:
 
 OMB_ACCOUNT cuts off long titles (as "Medicare-Eligible REtiree Health Fund Contribution, National Gua")
 
+When FY1 is NA, one year money is implied (FY1 should be same as FY2)
+
 ## Questions
-* How can an account have no begin year, and "X" end year? (Non financing account?)
+* No-Year Money: How can an account have no begin year, and "X" end year? How to track no year money with no begin year?
+
+
+
