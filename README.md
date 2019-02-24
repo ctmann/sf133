@@ -1,11 +1,17 @@
 # SF133
-The SF133 is published by OMB's MAX budget execution database and represents an authoritative source for tracking budget execution at the account level. Difficult to use, the online reports (.xlsx) include a "Raw Data" tab that necessarily mingle subtotals and detailed line item changes, requiring great care to accurately disentangle. Pivot tables are also included in each online workbook. Cross-checking results with these tables and other related reports (see 1022, below) highly recommended. In sum...a dangerous dataset.
+The SF133 is published by OMB's MAX budget execution database and represents an authoritative source for tracking budget execution at the account level. 
+
+Difficult to use, the online reports (.xlsx) include a "Raw Data" tab that necessarily mingle subtotals and detailed line item changes, requiring great care to accurately disentangle. Pivot tables are also included in each online workbook. Cross-checking results with these tables and other related reports (see 1022, below) highly recommended. In sum...a dangerous dataset.
 
 ### Purpose of this Repository
 This repository compiles the **Department of Defense-Military** Monthly Report collection for years **FY2013-FY2018.** (Earlier years vary too much in both format and shape.) By combining reports from past years, it should be possible to track cumulative changes in a single appropriation (or appn category) from year to year. 
 
 Such an analysis could reveal spending patterns that lie outside the norm, for example, by identifying historical unobligated balances in Operation and Maintence Army accounts.
 
+### How to Use this Repository
+* Updating Data: See section "How to Update..." in R script.
+* Complete dataset: Size limitations prevent complete compiled dataset from being posted as .csv on Github. Users will consquently need to download and compile data using repository script. Currently, I have not "gathered" the amounts by reporting month, as I believed this might be too confusing for such a complicated dataset. 
+* Incomplete dataset: The **FY2018 report** in this repository is available as .csv file in Data/Processed.
 
 ### Reporting Timeframe
 
