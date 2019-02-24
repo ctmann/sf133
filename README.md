@@ -6,7 +6,7 @@ Published by OMB's MAX budget exectuion database. This repository compiles only 
 #### End of fiscal quarters, by month
 
 Quarter | Begin Month | End Month
---- |---
+--- | --- | ---
 1 | October | December
 2 | January | March
 3 | April | June
