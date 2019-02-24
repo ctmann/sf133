@@ -12,7 +12,8 @@ Quarter | Begin Month | End Month
 3 | April | June
 4 | July | September
 
-Until FY2018, public SF133 reports skipped the 
+Until FY2018, public SF133 reports skipped the first qtr
+
 MONTH | FY Qtr | Notes
 --- |---|---
 NOV | second(?!) month of 1st qtr|
