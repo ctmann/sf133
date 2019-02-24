@@ -4,6 +4,7 @@ Published by OMB's MAX budget exectuion database. This repository compiles only 
 ### Reporting Timeframe
 
 #### End of fiscal quarters, by month
+
 Quarter | Begin Month | End Month
 --- |---
 1 | October | December
@@ -13,7 +14,7 @@ Quarter | Begin Month | End Month
 
 Until FY2018, public SF133 reports skipped the 
 MONTH | FY Qtr | Notes
---- |---
+--- |---|---
 NOV | second(?!) month of 1st qtr|
 dec missing | | added in FY2018
 JAN | first month of 2nd qtr|
