@@ -1,4 +1,31 @@
 # sf133
+Published by OMB's MAX budget exectuion database. This repository compiles only the Department of Defense-Military Monthly Report collection, published online on an annual basis.
+
+### Reporting Timeframe
+
+#### End of fiscal quarters, by month
+Quarter | Begin Month | End Month
+--- |---
+1 | October | December
+2 | January | March
+3 | April | June
+4 | July | September
+
+Until FY2018, public SF133 reports skipped the 
+MONTH | FY Qtr | Notes
+--- |---
+NOV | second(?!) month of 1st qtr|
+dec missing | | added in FY2018
+JAN | first month of 2nd qtr|
+FEB ||
+mar missing | | added in FY2018
+APR | first month of 3rd qrtr|
+MAY ||
+jun missing|| added in FY2018
+JUL | first month of 4th qtr|
+AUG ||
+sep missing | | added in FY2018
+oct missing | first month of 1st qtr| added in FY2018
 
 
 
@@ -6,10 +33,10 @@
 [OMB circular A-11, Appendix F](https://obamawhitehouse.archives.gov/sites/default/files/omb/assets/a11_current_year/app_f.pdf) contains data definitions for SF133.
 
 ### Formats
-In FY2018, OMB began providing a quarterly report, along with separate monthly (.xlsx)
-In FY2013, OMB began consistenly posting Excel files on monthly basis. (.xlsx)
-In FY2012, OMB reported Nov, Jul, and Aug periods in Excel. (.xls)
-In previous years (FY1998-FY2011), only pdfs are available. (.pdf)
+* In FY2018, OMB began providing a quarterly report, along with separate monthly (.xlsx)
+* In FY2013, OMB began consistenly updating amounts in JAN, FEB, <no MAR>, APR, <no JUN>, JUL, AUG, <no SEP>, 
+* In FY2012, OMB reported Nov, Jul, and Aug periods in Excel. (.xls)
+* In previous years (FY1998-FY2011), only pdfs are available. (.pdf)
 
 ### Shape of Data
 *  From FY2013-FY2017, 36-41 Variables
@@ -22,9 +49,6 @@ In previous years (FY1998-FY2011), only pdfs are available. (.pdf)
   -  69 (Dept.Transportation)
 * OMB_ACCOUNT cuts off long titles (as "Medicare-Eligible REtiree Health Fund Contribution, National Gua")
 * When FY1 is NA, one year money is implied (FY1 should be same as FY2)
-
-## Questions
-* No-Year Money: How can an account have no begin year, and "X" end year? How to track no year money with no begin year?
 
 ### Selected Data Definitions
 
@@ -51,6 +75,8 @@ FY.cancelled | added - calculated by adding five years to end of period-of-avail
 
 #### Cross Check SF133 with 1022
 
+Take care that 1022 corresponds with SF133 reporting date. (December = AMT1, for example)
+
 1022 Column | 1022 Column Title |SF133 LINENO | SF 133 LINE_DESC
 --- | ---| ---| ---
 Col C | Approved Program | 1910 | Total budgetary resources (disc. and mand.)
@@ -58,8 +84,6 @@ Col E | Obligation Transactions in Current Fiscal Year | 2190 | New obligations 
 Col G | Gross Disbursements in Current Fiscal Year | 4020 |Disc: Outlays, gross (total)
 Col H | Gross Unpaid Obligations End of Period (Col E+F+G) | 3050 |Ob Bal: EOY: Unpaid obligations
 Col I | Total Unobligated Balance, (Col D-E) | 2490 |Unob Bal: end of year (total)
-
-
 
 ### Favorite Lines
 OMB Circular A-11 Appendix F explains line numbers, which may change from year to year.
@@ -71,6 +95,10 @@ LINENO | LINE_DESC  | My notes
 2413 | Expired Unobligated Balance: end of year | Expired Funds. (Not sure this is identical with STAT variable)
 1089 | Exp Unob Bal: Other Balances withdrawn to Treasury | Cancelled funds
 
+
+## Questions
+* No-Year Money: No year money seems to have no begin (FY1) year. Is it implied? Not sure... 
+* Report Dates: In previous years, the SF133 did not seem to include "end of year".
 
 
 
