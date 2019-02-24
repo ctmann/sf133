@@ -9,22 +9,15 @@ In FY2013, OMB began consistenly posting Excel files on monthly basis. (.xlsx)
 In FY2012, OMB reported Nov, Jul, and Aug periods in Excel. (.xls)
 In previous years (FY1998-FY2011), only pdfs are available. (.pdf)
 
-### Shape
-From FY2013-FY2017: 36 Variables
-
-In FY2018, 4 new colnames introduced
-* "AMT1"            
-* "AMT2"            
-* "AMT3"            
-* "AMT4"            
-* "LINE_DESC_SHORT"
-
-In FY2017, AMT_OCT (not included in previous years) introduced
+### Shape of Data
+*  From FY2013-FY2017, 36-41 Variables
+*  In FY2018, four quarterly amount variables introduced ("AMT1", "AMT2", "AMT3", "AMT4"), and an abreviated line description (LINE_DESC_SHORT)
+*  In FY2017, AMT_OCT (not included in previous years) introduced
 
 ### Data Inconsistencies
-TRAG (treasury agency code) wrongly identifies:
-* 12 (dept. of agriculture) and 
-* 69 (Dept.Transportation)
+* TRAG (treasury agency code) wrongly identifies:
+  -  12 (dept. of agriculture) and 
+  -  69 (Dept.Transportation)
 
 OMB_ACCOUNT cuts off long titles (as "Medicare-Eligible REtiree Health Fund Contribution, National Gua")
 
@@ -54,6 +47,12 @@ Lifespan.of.Money | added - begin and end FY money, as 2017/2017, 2017/2018, 201
 FY.cancelled | added - calculated by adding five years to end of period-of-availability
 
 
+### Cross-Checking
+
+#### Cross Check SF133 with 1022
+
+
+
 
 
 ### Best Lines
@@ -62,7 +61,8 @@ OMB Circular A-11 Appendix F explains line numbers, which may change from year t
 LINENO | LINE_DESC  | My notes
 --- | --- | ---
 1100 | BA: Disc: Appropriation | Seems to show original appn only in first year, and even this may be altered slightly
-2490 | Unob Bal: end of year (total) | 
+2490 | Unob Bal: end of year (total) | Unobligated funds. Not sure how this applies to mid-year reporting.
+2413 | Expired Unobligated Balance: end of year | Expired Funds. (Not sure this is identical with STAT variable)
 1089 | Exp Unob Bal: Other Balances withdrawn to Treasury | Cancelled funds
 
 
