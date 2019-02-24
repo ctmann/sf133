@@ -18,7 +18,7 @@ library(feather)
 # How to Update this file -------------------------------------------------
 
 # Step 1
-current.fy <- 2018
+current.fy <- "2018"
 
 #Step 2
 # manual; paste new hyperlink in sf.tibble, below. Unfortunately, no predictable pattern.
@@ -155,9 +155,22 @@ sf.tibble.10 <- sf.tibble.9 %>%
   dim(sf.tibble.10)     
 
 # export ------------------------------------------------------------------
-write_csv(sf.tibble.10, "./Data/Processed/sf133.compilation.csv")
-write_feather(sf.tibble.10, "./Data/Processed/sf133.compilation.feather")
-     
+
+final.tibble <- sf.tibble.10
+  
+  
+# Too large for Github. Filter for only FY2018 report.  
+final.tibble %>% 
+    filter(report.FY %in% current.fy) %>% 
+write_csv(paste0("./Data/Processed/sf133_", current.fy ,".csv") )
+
+# feather should preserve formatting  
+final.tibble %>% 
+    filter(report.FY %in% current.fy) %>% 
+write_feather(paste0("./Data/Processed/sf133_", current.fy ,".feather") )
+
+  
+
 
 
 
