@@ -1,5 +1,7 @@
 # sf133
 
+
+
 ### Data Definitions
 [OMB circular A-11, Appendix F](https://obamawhitehouse.archives.gov/sites/default/files/omb/assets/a11_current_year/app_f.pdf) contains data definitions for SF133.
 
@@ -18,10 +20,8 @@ In previous years (FY1998-FY2011), only pdfs are available. (.pdf)
 * TRAG (treasury agency code) wrongly identifies:
   -  12 (dept. of agriculture) and 
   -  69 (Dept.Transportation)
-
-OMB_ACCOUNT cuts off long titles (as "Medicare-Eligible REtiree Health Fund Contribution, National Gua")
-
-When FY1 is NA, one year money is implied (FY1 should be same as FY2)
+* OMB_ACCOUNT cuts off long titles (as "Medicare-Eligible REtiree Health Fund Contribution, National Gua")
+* When FY1 is NA, one year money is implied (FY1 should be same as FY2)
 
 ## Questions
 * No-Year Money: How can an account have no begin year, and "X" end year? How to track no year money with no begin year?
@@ -51,6 +51,12 @@ FY.cancelled | added - calculated by adding five years to end of period-of-avail
 
 #### Cross Check SF133 with 1022
 
+1022 Column | 1022 Column Title |SF133 LINENO | SF 133 LINE_DESC
+Col C | Approved Program | 1910 | Total budgetary resources (disc. and mand.)
+Col E | Obligation Transactions in Current Fiscal Year | 2190 | New obligations and upward adjustments (total)
+Col G | Gross Disbursements in Current Fiscal Year | 4020 |Disc: Outlays, gross (total)
+Col H | Gross Unpaid Obligations End of Period (Col E+F+G) | 3050 |Ob Bal: EOY: Unpaid obligations
+Col I | Total Unobligated Balance, (Col D-E) | 2490 |Unob Bal: end of year (total)
 
 
 
