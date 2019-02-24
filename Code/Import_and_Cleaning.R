@@ -3,22 +3,18 @@
 #' Compile SF133, an OMB Budget execution report
 #' Excel files for Department of Defense-Military
 
-
-
 # Libraries -------------------------------------------------
 library(tidyverse)
 library(readxl)
-library(arsenal)
 library(stringr)
 library(rpivotTable)
+library(feather)
 
 # Functions and Common Vars -----------------------------------------------
   iferror <- function(expr, error_expr){
   tryCatch(expr, error=function(e){error_expr})
 }     
       
-
-
 # How to Update this file -------------------------------------------------
 
 # Step 1
@@ -31,7 +27,6 @@ current.fy <- 2018
 #' 1. Create a tibble with hyperlinks
 #' 2. Download data to tibble:  (downloading directly with read_excel is not currently possible)
 #' 3. unnest
-
 
 # 1. Create tibble
       sf.tibble <- tibble(
@@ -46,9 +41,7 @@ current.fy <- 2018
                           #< new hyperlink goes here #
                       ))
 
-      
-# 2.  Download and Read
-
+# 2.  Download and Read **********************
       # Download Excel Files to Raw folder
       my.download.function <- function(my.url,my.download.filename){
         download.file(my.url, my.download.filename, mode = "wb")}
@@ -58,37 +51,32 @@ current.fy <- 2018
       # Read files to tibble
       sf.tibble.2 <- sf.tibble %>% 
         mutate(my.data = map(my.filename, ~(.x %>% 
-                                              read_excel(sheet="Raw Data", col_types="text") ) ) )
-             
-                             
+                                             read_excel(sheet="Raw Data", col_types="text") ) ) )
+      #*************************************** 
+                            
 # 3.  Unnest and initial tidy
       sf.tibble.3 <- sf.tibble.2 %>% 
         unnest() %>% 
         group_by(report.FY) %>% 
         mutate(sorting.id = row_number() ) %>% 
-        select(sorting.id, everything()) %>% ungroup()
+        ungroup() %>% 
+        select(sorting.id, everything(), my.filename, hyperlink)
 
-      # Remove (some) inconsistent columns
-      sf.tibble.4 <- sf.tibble.3 %>% 
-        select(-c(#ALLOC,
-                  COHORT,
-                  CAT_B) ) 
       # NAs expose inconsistent formatting
         # sf.tibble.4 %>% summarise_all(funs(sum(is.na(.)) )) %>% View()
       
 # Basic Tidying ----------------------------------------------------------------
 
       # Convert and Trim
-      sf.tibble.5 <- sf.tibble.4 %>% 
+      sf.tibble.5 <- sf.tibble.3 %>% 
         # Trim strings
         mutate_if(is.character, str_trim) %>% 
         # convert numbers
         mutate_at(vars(contains(match="AMT")), funs(parse_number) ) %>% 
         # convert dates
-        mutate(LAST_UPDATED = parse_date(LAST_UPDATED, "%Y-%m-%d") )
+        mutate(LAST_UPDATED = parse_date(LAST_UPDATED, "%Y-%m-%d") ) 
       
-      
-# Add Metadata ------------------------------------------------------------
+# Add New Variables ------------------------------------------------------------
 #' 1 account.name
 #' 2 service
 #' 3 ac.rc
@@ -142,10 +130,33 @@ current.fy <- 2018
        mutate(life.of.money = iferror(parse_number(helper.FY.end) - parse_number(helper.FY.begin)+1, helper.FY.end )) %>% 
        mutate(lifespan.of.money = paste0(life.FY.begin, "/", life.FY.end) ) %>% 
        mutate(FY.cancelled = iferror(parse_number(life.FY.begin) +5, "X") )
-       
+
+# Merge other Enriching data -------------------------------------------------------
+#' 1. Merge Public Law title (can't remember where I got this datasset)
+#' 2. Merge include.exclude analysis (accounts identified by other analysts)
+     
+# Import refs data stored as tibbles
+source(file="./Data/Raw/refs.R")
+     
+# 1: Public Law 
+sf.tibble.9 <- sf.tibble.8 %>% 
+     left_join(ref.pl, by = c("TRACCT" =  "account.code") )
+      
+  #Check
+  dim(sf.tibble.8)
+  dim(sf.tibble.9)
+
+# 2. Include.exclude.analysis
+sf.tibble.10 <- sf.tibble.9 %>% 
+  left_join(ref.include.exclude.analysis, by = c("TRACCT" = "account.code") )
+
+  #Check
+  dim(sf.tibble.9)
+  dim(sf.tibble.10)     
 
 # export ------------------------------------------------------------------
-
+write_csv(sf.tibble.10, "./Data/Processed/sf133.compilation.csv")
+write_feather(sf.tibble.10, "./Data/Processed/sf133.compilation.feather")
      
 
 

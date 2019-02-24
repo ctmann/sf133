@@ -9,7 +9,6 @@ In FY2013, OMB began consistenly posting Excel files on monthly basis. (.xlsx)
 In FY2012, OMB reported Nov, Jul, and Aug periods in Excel. (.xls)
 In previous years (FY1998-FY2011), only pdfs are available. (.pdf)
 
-
 ### Shape
 From FY2013-FY2017: 36 Variables
 
@@ -33,6 +32,37 @@ When FY1 is NA, one year money is implied (FY1 should be same as FY2)
 
 ## Questions
 * No-Year Money: How can an account have no begin year, and "X" end year? How to track no year money with no begin year?
+
+### Selected Data Definitions
+
+VARIABLE | NOTES
+--- | ---|
+AGENCY | For complete list, see OMB Circular A-11, Appendix C
+BUREAU | ibid
+OMB_ACCT | OMB Circular A-11, Section 79D
+TRAG | Treasury Agency Code
+STAT | Status- Expired or Unexpired
+CRED_INT | Credit Accounts, Financing Accounts, Non-Financing Accounts
+LINENO | For complete list, see OMB Circular A-11, Appendix F (also explains how lines are added together)
+SECTION | 4 Sections (Budgetary Resources/ Status of Budgetary Resources / Change in Obligated Balance/ Budget Authority and Outlays, Net)
+LINE_TYPE | D: Detail line, S: Summary or total line
+AGEUP | 3-digit agency code. See OMB Circular A-1, Appendix C for complete list.
+AMT...| Quarterly AMT where Month not indicated. Added in FY2018. (Dec, March, June, Sept)
+
+
+
+### Best Lines
+OMB Circular A-11 Appendix F explains line numbers, which may change from year to year.
+
+Note **STAT** variable (Status) indicates Expired/Unexpired funds.
+
+
+LINENO | LINE_DESC  | My notes
+--- | --- | ---
+1100 | BA: Disc: Appropriation | Seems to show original appn only in first year, and even this may be altered slightly
+2490 | Unob Bal: end of year (total) | 
+1089 | Exp Unob Bal: Other Balances withdrawn to Treasury | Cancelled funds
+
 
 
 
