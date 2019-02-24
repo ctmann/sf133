@@ -52,6 +52,7 @@ FY.cancelled | added - calculated by adding five years to end of period-of-avail
 #### Cross Check SF133 with 1022
 
 1022 Column | 1022 Column Title |SF133 LINENO | SF 133 LINE_DESC
+--- | ---| ---| ---
 Col C | Approved Program | 1910 | Total budgetary resources (disc. and mand.)
 Col E | Obligation Transactions in Current Fiscal Year | 2190 | New obligations and upward adjustments (total)
 Col G | Gross Disbursements in Current Fiscal Year | 4020 |Disc: Outlays, gross (total)
