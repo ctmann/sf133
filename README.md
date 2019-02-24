@@ -12,7 +12,7 @@ Quarter | Begin Month | End Month
 3 | April | June
 4 | July | September
 
-Until FY2018, public SF133 reports skipped the first qtr
+Until FY2018, public SF133 reports skipped the first qtr reporting and left a gap at the end-of-year (missing SEP,OCT).
 
 MONTH | FY Qtr | Notes
 --- |---|---
@@ -20,15 +20,14 @@ NOV | |
 _dec_ | | DEC added in FY2018
 JAN | first month of 2nd qtr|
 FEB ||
- | | MAR added in FY2018
+_mar_ | | MAR added in FY2018
 APR | first month of 3rd qrtr|
 MAY ||
-|| JUN added in FY2018
+_jun_|| JUN added in FY2018
 JUL | first month of 4th qtr|
 AUG ||
-| | SEP added in FY2018
-| first month of 1st qtr| OCT added in FY2018
-
+_sep_| | SEP added in FY2018
+_oct_| first month of 1st qtr| OCT added in FY2018
 
 
 ### Data Definitions
