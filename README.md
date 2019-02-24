@@ -40,8 +40,9 @@ _oct_| first month of 1st qtr| OCT added in FY2018
 * In previous years (FY1998-FY2011), only pdfs are available. (.pdf)
 
 ### Shape of Data
-*  From FY2013-FY2017, 36-41 Variables
-*  In FY2018, four quarterly amount variables introduced ("AMT1", "AMT2", "AMT3", "AMT4"), and an abreviated line description (LINE_DESC_SHORT)
+From FY2013-FY2017, there have been between 36-41 Variables, a satisfactory level of consistency. Data gets less reliable in earlier periods.
+
+*  In FY2018, four quarterly variables were introduced ("AMT1", "AMT2", "AMT3", "AMT4"), and an abreviated line description (LINE_DESC_SHORT)
 *  In FY2017, AMT_OCT (not included in previous years) introduced
 
 ### Data Inconsistencies
