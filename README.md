@@ -48,14 +48,16 @@ SECTION | 4 Sections (Budgetary Resources/ Status of Budgetary Resources / Chang
 LINE_TYPE | D: Detail line, S: Summary or total line
 AGEUP | 3-digit agency code. See OMB Circular A-1, Appendix C for complete list.
 AMT...| Quarterly AMT where Month not indicated. Added in FY2018. (Dec, March, June, Sept)
+Life.Begin/Life.End | added - Formatted YYYY (instead of YY).
+Life.of.Money | added - indicates 1-year, 2-year, 3-year money, etc. 
+Lifespan.of.Money | added - begin and end FY money, as 2017/2017, 2017/2018, 2017/2019, etc.
+FY.cancelled | added - calculated by adding five years to end of period-of-availability
+
 
 
 
 ### Best Lines
 OMB Circular A-11 Appendix F explains line numbers, which may change from year to year.
-
-Note **STAT** variable (Status) indicates Expired/Unexpired funds.
-
 
 LINENO | LINE_DESC  | My notes
 --- | --- | ---
