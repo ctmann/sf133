@@ -17,7 +17,7 @@ Until FY2018, public SF133 reports skipped the first qtr
 MONTH | FY Qtr | Notes
 --- |---|---
 NOV | |
- | | DEC added in FY2018
+_dec_ | | DEC added in FY2018
 JAN | first month of 2nd qtr|
 FEB ||
  | | MAR added in FY2018
