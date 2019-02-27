@@ -44,10 +44,10 @@ LINENO | LINE_DESC  | My notes
 
 The dataset contained in the "processed" folder is the SF133 filtered my favorite lines (due to space limitations, the entire dataset could not be uploaded to Github). These are shown in the R code as:
 
-  "1100",                         # APPN
-  "2490", "2412", "2413",         # Unobligated, expired and unexpired
-  "1029",                         # cancelled (DOD report)
-  "1910", "2190", "3050", "4020") # 1002 lines
+    "1100",                         # APPN
+    "2490", "2412", "2413",         # Unobligated, expired and unexpired
+    "1029",                         # cancelled (DOD report)
+    "1910", "2190", "3050", "4020"  # 1002 lines
 
 ## Limitations of the **Excel** SF133 report
 
