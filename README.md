@@ -11,12 +11,16 @@ Such an analysis could reveal spending patterns that lie outside the norm, for e
 ### How to Use this Repository
 * Updating Data: See section "How to Update..." in R script.
 * Complete dataset: Size limitations prevent complete compiled dataset from being posted as .csv on Github. Users will consquently need to download and compile data using repository script. Currently, I have not "gathered" the amounts by reporting month, as I believed this might be too confusing for such a complicated dataset. 
-* Incomplete dataset: The **FY2018 report** in this repository is available as .csv file in Data/Processed.
 
 ### Reporting Timeframe
+There are effectively two annual SF133 versions. The **Excel** report (with pivot tables), and the **XML** report. 
 
-#### End of fiscal quarters, by month
+The Excel report includes only some months (see below). The XML report *seems* to contain every month, but I'm still evaluating.
 
+The two versions do not share identical column names.
+
+#### Reference: End of fiscal quarters, by month
+Here's a reminder on the fiscal months of the year:
 Quarter | Begin Month | End Month
 --- | --- | ---
 1 | October | December
@@ -24,22 +28,36 @@ Quarter | Begin Month | End Month
 3 | April | June
 4 | July | September
 
+### Favorite Lines
+OMB Circular A-11 Appendix F explains line numbers, which may change from year to year.
+
+LINENO | LINE_DESC  | My notes
+--- | --- | ---
+1100 | BA: Disc: Appropriation | Seems to show original appn only in first year, and even this may be altered. Not certain about this line...
+2490 | Unob Bal: end of year (total) | Unobligated funds. A sum of both expired (2413) and unexpired (2412).
+2412 | Unexpired Unobligated Balance: end of year | equivalent to 2490 with STAT U (Unexpired)
+2413 | Expired Unobligated Balance: end of year | equivalent to 2490 with STAT E (Expired)
+1029 | Unob Bal: Other balances returned to the Treasury | Cancelled amounts. Somtimes cited by DOD as "Amounts Returned to Treasury from Canceling Accounts." Preferred field.
+1089 | Exp Unob Bal: Other Balances withdrawn to Treasury | Cancelled unobligated. Not sure what this is.
+
+## Limitations of the **Excel** SF133 report
+
 Until FY2018, public SF133 reports skipped the first qtr reporting and left a gap at the end-of-year (missing SEP,OCT).
 
 MONTH | FY Qtr | Notes
 --- |---|---
 NOV | |
-_dec_ | | DEC added in FY2018
+... | | DEC added in FY2018
 JAN | first month of 2nd qtr|
 FEB ||
-_mar_ | | MAR added in FY2018
+... | | MAR added in FY2018
 APR | first month of 3rd qrtr|
 MAY ||
-_jun_|| JUN added in FY2018
+...|| JUN added in FY2018
 JUL | first month of 4th qtr|
 AUG ||
-_sep_| | SEP added in FY2018
-_oct_| first month of 1st qtr| OCT added in FY2018
+...| | SEP added in FY2018
+...| first month of 1st qtr| OCT added in FY2018
 
 
 ### Data Definitions
@@ -99,20 +117,11 @@ Col G | Gross Disbursements in Current Fiscal Year | 4020 |Disc: Outlays, gross 
 Col H | Gross Unpaid Obligations End of Period (Col E+F+G) | 3050 |Ob Bal: EOY: Unpaid obligations
 Col I | Total Unobligated Balance, (Col D-E) | 2490 |Unob Bal: end of year (total)
 
-### Favorite Lines
-OMB Circular A-11 Appendix F explains line numbers, which may change from year to year.
-
-LINENO | LINE_DESC  | My notes
---- | --- | ---
-1100 | BA: Disc: Appropriation | Seems to show original appn only in first year, and even this may be altered slightly
-2490 | Unob Bal: end of year (total) | Unobligated funds. Not sure how this applies to mid-year reporting.
-2413 | Expired Unobligated Balance: end of year | Expired Funds. (Not sure this is identical with STAT variable)
-1089 | Exp Unob Bal: Other Balances withdrawn to Treasury | Cancelled funds
-
 
 ## Questions
 * No-Year Money: No year money seems to have no begin (FY1) year. Is it implied? Not sure... 
 * Report Dates: In previous years, the SF133 did not seem to include "end of year".
+* What's up with the many conflicting treasury agency codes?
 
 
 
