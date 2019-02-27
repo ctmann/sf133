@@ -31,7 +31,7 @@ current.fy <- "2018"
 # 1. Create tibble
       sf.tibble <- tibble(
         report.FY = c(2013:current.fy),
-        my.filename = paste0("./Data/Raw/", report.FY, ".xlsx"),
+        my.filename = paste0("./Data/Raw/excel/", report.FY, ".xlsx"),
         hyperlink = c("https://portal.max.gov/portal/document/SF133/Budget/attachments/646122715/660638471.xlsx",     #FY2013
                       "https://portal.max.gov/portal/document/SF133/Budget/attachments/703038966/737052130.xlsx",     #FY2014
                       "https://portal.max.gov/portal/document/SF133/Budget/attachments/781353958/783221158.xlsx",     #FY2015
