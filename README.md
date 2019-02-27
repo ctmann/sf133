@@ -42,7 +42,7 @@ LINENO | LINE_DESC  | My notes
 1029 | Unob Bal: Other balances returned to the Treasury | Cancelled amounts. Somtimes cited by DOD as "Amounts Returned to Treasury from Canceling Accounts." Preferred field.
 1089 | Exp Unob Bal: Other Balances withdrawn to Treasury | Cancelled unobligated. Not sure what this is.
 
-The dataset contained in the "processed" folder is the SF133 filtered my favorite lines (due to space limitations, the entire dataset could not be uploaded to Github). These are shown in the R code as:
+The dataset contained in the "processed" folder contains the compiled SF133 filtered by my favorite lines (due to space limitations, the entire dataset could not be uploaded to Github). These are shown in the R code as:
 
     "1100",                         # APPN
     "2490", "2412", "2413",         # Unobligated, expired and unexpired
