@@ -20,7 +20,9 @@ The Excel report includes only some months (see below). The XML report *seems* t
 The two versions do not share identical column names.
 
 #### Reference: End of fiscal quarters, by month
+
 Here's a reminder on the fiscal months of the year:
+
 Quarter | Begin Month | End Month
 --- | --- | ---
 1 | October | December
