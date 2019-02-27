@@ -50,14 +50,14 @@ NOV | |
 dec | | DEC added in FY2018
 JAN | first month of 2nd qtr|
 FEB ||
-.x. | | MAR added in FY2018
+mar| | MAR added in FY2018
 APR | first month of 3rd qrtr|
 MAY ||
-.x.|| JUN added in FY2018
+jun|| JUN added in FY2018
 JUL | first month of 4th qtr|
 AUG ||
-.x.| | SEP added in FY2018
-.x.| first month of 1st qtr| OCT added in FY2018
+sep| | SEP added in FY2018
+oct| first month of 1st qtr| OCT added in FY2018
 
 
 ### Data Definitions
