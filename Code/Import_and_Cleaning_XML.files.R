@@ -66,7 +66,7 @@ xml.tibble.4 <- xml.tibble.3 %>%
   # no year money (yes/no)
   mutate(is.this.no.year.money = ifelse(`cgac_availability_type_code` %in% "X", "yes", "no") ) %>% 
   # rename to logical
-  mutate(`month_number` = name3 %in% month.abb ) %>% 
+  mutate(`month_number` = match(name3, month.abb) ) %>% 
   rename( fy1 = `fy1_code`, fy2 = `fy2_code`,
           section_name = name, section_number = number,
           line_type = type,
@@ -75,24 +75,52 @@ xml.tibble.4 <- xml.tibble.3 %>%
           status.expired.or.unexpired = tafs_status)
 
 #Adding new cols
-xml.tibble.5 <- xml.tibble.4 %>%    
+
+# Treasury agency code 69 is in error
+treasury_agency_code_69 <- c(
+         #DW
+        "Chemical Demilitarization Construction, Defense-wide", 
+        "Department of Defense Base Closure Account",            
+        "Department of Defense Base Closure Account 2005",
+        "Military Construction, Defense-wide",
+        # Air Force
+        "Military Construction, Air Force",                     
+        "Operation and Maintenance, Air Force",                  
+        # Army
+        "Operation and Maintenance, Army",                    
+        "Military Construction, Army",                        
+        "Military Construction, Army Reserve",                  
+        # Navy
+        "Military Construction, Navy",                          
+        "Operation and Maintenance, Marine Corps")
+
+xml.tibble.5 <- xml.tibble.4 %>%
+  mutate(corrected_treasury_agency_code = case_when(
+    # Correct Treasury Account 12 (only contains Procurement of Ammo, Army)
+    treasury_agency_code %in% "12"                           ~ "21",
+    # Correct Treasury Account 69 (contains mix of accounts)
+    treasury_account_title %in% treasury_agency_code_69[1:4]   ~ "97",
+    treasury_account_title %in% treasury_agency_code_69[5:6]   ~ "57",
+    treasury_account_title %in% treasury_agency_code_69[7:9]   ~ "21",
+    treasury_account_title %in% treasury_agency_code_69[10:11] ~ "17",
+    TRUE                                                     ~ treasury_agency_code) ) %>% 
+  # Service
   mutate(service = case_when(
-  #Problem: Multiple agency code (treasury, cgac, allocation); code for 12 is  Dept. of Agriculture; code 69 is  Dept.Transportation??!!
-  treasury_agency_code %in% "12"| str_detect(budget_account_title, "Army")                     ~ "Army",
-  str_detect(budget_account_title, "Marine Corps") & !str_detect(budget_account_title, "Navy") ~ "Marine.Corps",
-  treasury_agency_code %in% "17" | str_detect(budget_account_title, "Navy")                            ~ "Navy",
-  treasury_agency_code %in% "57" | str_detect(budget_account_title, "Air Force")                       ~ "Air.Force",
-  treasury_agency_code %in% "97" | str_detect(budget_account_title, "Defense-Wide")                    ~ "Defense.Wide",
-  TRUE                                                                                         ~ "unknown") )  %>% 
+  corrected_treasury_agency_code %in% "21"   ~ "Army",
+  corrected_treasury_agency_code %in% "17" & str_detect(budget_account_title, "Marine Corps") & !str_detect(budget_account_title, "Navy") ~ "Marine.Corps",
+  corrected_treasury_agency_code %in% "17"  ~ "Navy",
+  corrected_treasury_agency_code %in% "57"  ~ "Air.Force",
+  corrected_treasury_agency_code %in% "97"  ~ "Defense.Wide",
+  TRUE                                      ~ "unknown") )  %>% 
   # active or reserve (best guess)
   mutate(ac.rc = case_when(
     service %in% c("Army", "Marine.Corps", "Navy", "Air.Force") & 
       (str_detect(budget_account_title, "Reserve")|str_detect(budget_account_title, "National Gu") ) ~ "RC",
     service %in% c("Army", "Marine.Corps", "Navy", "Air.Force")              ~ "AC",
     TRUE ~ "Other") ) %>% 
-  mutate(life.of.money = iferror(parse_number(life.FY.end) - parse_number(life.FY.end)+1, life.FY.end )) %>% 
+  mutate(life.of.money = iferror(parse_number(life.FY.end) - parse_number(life.FY.begin)+1, life.FY.end )) %>% 
   mutate(lifespan.of.money = paste0(life.FY.begin, "/", life.FY.end) ) %>% 
-  mutate(FY.cancelled = iferror(parse_number(life.FY.begin) +5, "X") ) 
+  mutate(FY.cancelled = iferror(parse_number(life.FY.end) +5, "X") ) 
 
 # Merge other Enriching data -------------------------------------------------------
 #' 1. Merge Public Law title (can't remember where I got this datasset)
