@@ -23,8 +23,7 @@ iferror <- function(expr, error_expr){
 # How to Update this file -------------------------------------------------
 
 # Step 1
-current.fy <- "2018"
-
+current.fy <- "2019"
 
 # Import ------------------------------------------------------------------
 #' 1. Create a tibble 
@@ -54,17 +53,17 @@ xml.tibble.4 <- xml.tibble.3 %>%
   mutate_if(is.character, str_trim) %>% 
   # convert numeric col, adj. for thousands
   mutate_at(vars(contains(match="amount")), funs(parse_number)) %>% 
-  mutate(   amount = amount * 1e3) %>% 
+   # mutate(   amount = amount * 1e3) %>% 
    # pad bureau code id to 2
   mutate(budget_bureau_code = str_pad(`budget_account_id`, width = 2, side = "left", pad = 0) ) %>% 
   # pad account id to 4
   mutate(`budget-account_id` = str_pad(`budget_account_id`, width = 4, side = "left", pad = 0) ) %>%
   # pad account id to 4
   mutate(treasury_account_code = str_pad(`budget_account_id`, width = 4, side = "left", pad = 0) ) %>%
-   # begin/end of life cols
-  mutate(life.FY.begin = `cgac_beginning_poa_code`, life.FY.end = `cgac_ending_poa_code`) %>% 
-  # no year money (yes/no)
-  mutate(is.this.no.year.money = ifelse(`cgac_availability_type_code` %in% "X", "yes", "no") ) %>% 
+   # begin/end of life cols 
+  mutate(life.FY.begin = fy1_code, life.FY.end = fy2_code) %>% 
+    # no year money (yes/no)
+  mutate(is.this.no.year.money = ifelse(fy2_code %in% "X", "yes", "no") ) %>% 
   # rename to logical
   mutate(`month_number` = match(name3, month.abb) ) %>% 
   rename( fy1 = `fy1_code`, fy2 = `fy2_code`,
